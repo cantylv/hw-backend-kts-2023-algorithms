@@ -9,9 +9,7 @@ __all__ = (
 KT = TypeVar('KT')
 KV = TypeVar('KV')
 
-
-def flip_kv_vk(d: dict[KT, KV]) -> dict[KV, KT]:
-    """
+"""
     Функция должна возвращать словарь, в котором в качестве ключей - значения
     переданного словаря, а в качестве значений - ключи.
     Например,
@@ -23,11 +21,13 @@ def flip_kv_vk(d: dict[KT, KV]) -> dict[KV, KT]:
         'Москва': 'moscow',
     }
     """
-    raise NotImplementedError
+
+def flip_kv_vk(d: dict[KT, KV]) -> dict[KV, KT]:
+    reversed_dict = {value: key for key, value in d.items()}
+    return reversed_dict
 
 
-def flip_kv_vk_safe(d: dict[KT, KV]) -> dict[KV, list[KT]]:
-    """
+"""
     Функция должна возвращать словарь, в котором в качестве ключей - значения
     переданного словаря, а в качестве значений - массив ключей конфликтующих
     значений.
@@ -38,5 +38,17 @@ def flip_kv_vk_safe(d: dict[KT, KV]) -> dict[KV, list[KT]]:
     }) == {
         '+3': ['Москва', 'Санкт-Петербург'],
     }
-    """
-    raise NotImplementedError
+"""
+
+
+def flip_kv_vk_safe(d: dict[KT, KV]) -> dict[KV, list[KT]]:
+   
+    reversed_dict = {}
+    
+    for key, value in d.items():
+        if value in reversed_dict:
+            reversed_dict[value].append(key)
+        else:
+            reversed_dict[value] = [key]
+    
+    return reversed_dict
