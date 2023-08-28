@@ -1,5 +1,5 @@
 # Задачи KTS Metaclass: Python
-
+# Выполнил работу Lobanov Ivan + ChatGPT :D i'm so sorry but i was very busy
 ## 1. Переворачивание словаря
 
 `flip_kv_vk`
